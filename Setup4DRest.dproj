@@ -138,8 +138,8 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Setup4D.Rest.Interf.pas"/>
-        <DCCReference Include="Setup4D.Rest.pas"/>
+        <DCCReference Include="src\Setup4D.Rest.Interf.pas"/>
+        <DCCReference Include="src\Setup4D.Rest.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

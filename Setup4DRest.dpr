@@ -6,8 +6,8 @@
 
 uses
   System.SysUtils,
-  Setup4D.Rest.Interf in 'Setup4D.Rest.Interf.pas',
-  Setup4D.Rest in 'Setup4D.Rest.pas';
+  Setup4D.Rest.Interf in 'src\Setup4D.Rest.Interf.pas',
+  Setup4D.Rest in 'src\Setup4D.Rest.pas';
 
 begin
 end.
