@@ -3,8 +3,6 @@
 interface
 
 uses
-  RESTRequest4D.Request.Contract,
-
   {$IFDEF FPC}
     SysUtils, Classes, fpjson;
   {$ELSE}
@@ -12,8 +10,6 @@ uses
   {$ENDIF}
 
 type
-  ISetup4DResponse = RESTRequest4D.Request.Contract.IRequest;
-
   ISetup4DRest = interface
 
     function BaseURL(Const AValue: string) : ISetup4DRest;
