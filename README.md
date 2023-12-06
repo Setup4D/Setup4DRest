@@ -52,3 +52,227 @@ Access Project > Options > Delphi Compiler > Conditionals Defines
 ```
 
 * Add the directive *HAS_PORTUGUES*, necessary to enable Brazilian Portuguese language.
+
+
+## 🌐 TSetup4DRest Function
+
+The `TSetup4DRest` class implements additional methods for specific configuration of HTTP requests.
+
+### 📐 Methods
+
+#### ✔️ `function BaseURL(const AValue: string): ISetup4DRest;`
+
+Sets the base URL for the requests.
+
+- **Parameters:**
+  - `AValue`: The base URL.
+
+#### ✔️ `function Proxy(const AServer, APassword, AUsername: string; const APort: Integer): ISetup4DRest;`
+
+Configures a proxy for the requests.
+
+- **Parameters:**
+  - `AServer`: The proxy server address.
+  - `APassword`: The password for authentication on the proxy.
+  - `AUsername`: The username for authentication on the proxy.
+  - `APort`: The proxy server port.
+
+#### ✔️ `function DeactivateProxy: ISetup4DRest;`
+
+Deactivates the proxy configuration.
+
+#### ✔️ `function Timeout(const ATimeout: Integer): ISetup4DRest;`
+
+Sets the timeout for the requests.
+
+- **Parameters:**
+  - `ATimeout`: The timeout in milliseconds.
+
+#### ✔️ `function Resource(const AResourceSuffix: string): ISetup4DRest;`
+
+Sets the target resource for the request.
+
+- **Parameters:**
+  - `AResourceSuffix`: The resource suffix.
+
+#### ✔️ `function Resource: string;`
+
+Gets the currently configured resource.
+
+#### ✔️ `function ClearResource: ISetup4DRest;`
+
+Clears the resource configuration.
+
+#### ✔️ `function ResourceSuffix(const AResourceSuffix: string): ISetup4DRest;`
+
+Sets the resource suffix for the request.
+
+- **Parameters:**
+  - `AResourceSuffix`: The resource suffix.
+
+#### ✔️ `function ResourceSuffix: string;`
+
+Gets the currently configured resource suffix.
+
+#### ✔️ `function ClearResourceSuffix: ISetup4DRest;`
+
+Clears the resource suffix configuration.
+
+#### ✔️ `function AddHeader(const AName, AValue: string): ISetup4DRest;`
+
+Adds a header to the request.
+
+- **Parameters:**
+  - `AName`: The header name.
+  - `AValue`: The header value.
+
+#### ✔️ `function ClearHeaders: ISetup4DRest;`
+
+Clears all configured headers.
+
+#### ✔️ `function AddParam(const AName, AValue: string): ISetup4DRest;`
+
+Adds a parameter to the request.
+
+- **Parameters:**
+  - `AName`: The parameter name.
+  - `AValue`: The parameter value.
+
+#### ✔️ `function ClearParams: ISetup4DRest;`
+
+Clears all configured parameters.
+
+#### ✔️ `function AddBody(const AContent: string): ISetup4DRest; overload;`
+
+Adds a text body to the request.
+
+- **Parameters:**
+  - `AContent`: The text content to be added as the request body.
+
+#### ✔️ `function AddBody(const AContent: TJSONObject; const AOwns: Boolean = True): ISetup4DRest; overload;`
+
+Adds a JSON object body to the request.
+
+- **Parameters:**
+  - `AContent`: The JSON object to be added as the request body.
+  - `AOwns`: Indicates whether the request should take ownership of the content property.
+
+#### ✔️ `function AddBody(const AContent: TJSONArray; const AOwns: Boolean = True): ISetup4DRest; overload;`
+
+Adds a JSON array body to the request.
+
+- **Parameters:**
+  - `AContent`: The JSON array to be added as the request body.
+  - `AOwns`: Indicates whether the request should take ownership of the content property.
+
+#### ✔️ `function AddBody(const AContent: TObject; const AOwns: Boolean = True): ISetup4DRest; overload;`
+
+Adds an object body to the request.
+
+- **Parameters:**
+  - `AContent`: The object to be added as the request body.
+  - `AOwns`: Indicates whether the request should take ownership of the content property.
+
+#### ✔️ `function AddBody(const AContent: TStream; const AOwns: Boolean = True): ISetup4DRest; overload;`
+
+Adds a stream body to the request.
+
+- **Parameters:**
+  - `AContent`: The stream to be added as the request body.
+  - `AOwns`: Indicates whether the request should take ownership of the content property.
+
+#### ✔️ `function ClearBody: ISetup4DRest;`
+
+Clears the request body.
+
+#### ✔️ `function Token(const AToken: string): ISetup4DRest;`
+
+Sets a token for request authentication.
+
+- **Parameters:**
+  - `AToken`: The token to be used for authentication.
+
+#### ✔️ `function TokenBearer(const AToken: string): ISetup4DRest;`
+
+Sets a token in Bearer format for request authentication.
+
+- **Parameters:**
+  - `AToken`: The token to be used for authentication.
+
+#### ✔️ `function BasicAuthentication(const AUsername, APassword: string): ISetup4DRest;`
+
+Sets basic authentication credentials for the request.
+
+- **Parameters:**
+  - `AUsername`: User name.
+  - `APassword`: Password associated with the user name.
+
+#### ✔️ `function Accept(const AAccept: string): ISetup4DRest; overload;`
+
+Sets the "Accept" header for the request.
+
+- **Parameters:**
+  - `AAccept`: The value for the "Accept" header.
+
+#### ✔️ `function AcceptCharset(const AAcceptCharset: string): ISetup4DRest; overload;`
+
+Sets the "Accept-Charset" header for the request.
+
+- **Parameters:**
+  - `AAcceptCharset`: The value for the "Accept-Charset" header.
+
+#### ✔️ `function AcceptEncoding(const AAcceptEncoding: string): ISetup4DRest; overload;`
+
+Sets the "Accept-Encoding" header for the request.
+
+- **Parameters:**
+  - `AAcceptEncoding`: The value for the "Accept-Encoding" header.
+
+#### ✔️ `function Get: ISetup4DRest;`
+
+This method performs an HTTP GET request.
+
+#### ✔️ `function Post: ISetup4DRest;`
+
+This method performs an HTTP POST request.
+
+#### ✔️ `function Put: ISetup4DRest;`
+
+This method performs an HTTP PUT request.
+
+#### ✔️ `function Delete: ISetup4DRest;`
+
+This method performs an HTTP DELETE request.
+
+#### ✔️ `function Patch: ISetup4DRest;`
+
+This method performs an HTTP PATCH request.
+
+### ℹ️ Note
+
+- The methods `Get`, `Post`, `Put`, `Delete`, and `Patch` are responsible for initiating configuration for a specific HTTP request, setting the corresponding method.
+
+#### ✔️ `function AsContent: String;`
+
+This method gets the response content as a string.
+
+- **Return:**
+  - A string containing the response content.
+
+#### ✔️ `function AsStatusCode: Int64;`
+
+This method gets the response status code.
+
+- **Return:**
+  - An integer value representing the HTTP response status code.
+
+#### ✔️ `function AsJSONValue: {$IFDEF FPC}TJSONData{$ELSE}TJSONValue{$ENDIF};`
+
+This method gets the response content as a JSON object.
+
+- **Return:**
+  - A JSON object representing the response content.
+
+### ℹ️ Note
+
+- The `AsJSONValue` method is used to obtain the response content as a JSON object, allowing structured manipulation and analysis of the data returned by the request.
