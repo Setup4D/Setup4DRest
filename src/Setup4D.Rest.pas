@@ -21,10 +21,12 @@ type
 
   protected
     function BaseURL(Const AValue: string) : ISetup4DRest;
+    function Proxy (const AServer, APassword, AUsername: string; const APort: Integer): ISetup4DRest;
+    function DeactivateProxy: ISetup4DRest;
 
     function Timeout(const ATimeout: Integer): ISetup4DRest; overload;
 
-    function Resource(const AResourceSuffix: string): ISetup4DRest; overload;
+    function Resource(const AResource: string): ISetup4DRest; overload;
     function Resource: string; overload;
     function ClearResource: ISetup4DRest; overload;
 
@@ -132,13 +134,16 @@ function TSetup4DRest.AddHeader(const AName, AValue: string): ISetup4DRest;
 begin
   Result := Self;
   FRequest.AddHeader(AName, AValue);
-
 end;
 
 function TSetup4DRest.AddParam(const AName, AValue: string): ISetup4DRest;
 begin
   Result := Self;
+{$IFDEF FPC}
+  FRequest.AddParam(AName, StringReplace(AValue, ' ', '%20', [rfReplaceAll]));
+{$ELSE}
   FRequest.AddParam(AName, AValue);
+{$ENDIF}
 end;
 
 function TSetup4DRest.AsContent: string;
@@ -159,7 +164,11 @@ end;
 function TSetup4DRest.BaseURL(const AValue: string): ISetup4DRest;
 begin
   Result := Self;
+{$IFDEF FPC}
+  FRequest.BaseURL(StringReplace(AValue, ' ', '%20', [rfReplaceAll]));
+{$ELSE}
   FRequest.BaseURL(AValue);
+{$ENDIF}
 end;
 
 function TSetup4DRest.BasicAuthentication(const AUsername,
@@ -204,6 +213,12 @@ begin
   FRequest := TRequest.New;
 end;
 
+function TSetup4DRest.DeactivateProxy: ISetup4DRest;
+begin
+  Result := Self;
+  FRequest.DeactivateProxy;
+end;
+
 function TSetup4DRest.Delete: ISetup4DRest;
 begin
   Result := Self;
@@ -239,6 +254,13 @@ begin
   FResponse := FRequest.Post;
 end;
 
+function TSetup4DRest.Proxy(const AServer, APassword, AUsername: string;
+  const APort: Integer): ISetup4DRest;
+begin
+  Result := Self;
+  FRequest.Proxy(AServer, APassword, AUsername, APort);
+end;
+
 function TSetup4DRest.Put: ISetup4DRest;
 begin
   Result := Self;
@@ -246,10 +268,14 @@ begin
 end;
 
 function TSetup4DRest.Resource(
-  const AResourceSuffix: string): ISetup4DRest;
+  const AResource: string): ISetup4DRest;
 begin
   Result := Self;
-  FRequest.Resource(AResourceSuffix);
+{$IFDEF FPC}
+  FRequest.Resource(StringReplace(AResource, ' ', '%20', [rfReplaceAll]));
+{$ELSE}
+  FRequest.Resource(AResource);
+{$ENDIF}
 end;
 
 function TSetup4DRest.Resource: string;
@@ -261,7 +287,11 @@ function TSetup4DRest.ResourceSuffix(
   const AResourceSuffix: string): ISetup4DRest;
 begin
   Result := Self;
+{$IFDEF FPC}
+  FRequest.ResourceSuffix(StringReplace(AResourceSuffix, ' ', '%20', [rfReplaceAll]));
+{$ELSE}
   FRequest.ResourceSuffix(AResourceSuffix);
+{$ENDIF}
 end;
 
 function TSetup4DRest.ResourceSuffix: string;
