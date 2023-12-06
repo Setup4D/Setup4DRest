@@ -52,3 +52,226 @@ Acesse Project > Options > Delphi Compiler > Conditionals Defines
 ```
 
 * Adicione a diretiva *HAS_PORTUGUES*, necessária para habilitar o idioma português do Brasil.
+
+## 🌐 Função do TSetup4DRest
+
+   A classe `TSetup4DRest` implementa métodos adicionais para configuração específica de requisições HTTP.
+
+### 📐 Métodos
+
+#### ✔️ `function BaseURL(const AValue: string): ISetup4DRest;`
+
+Define a URL base para as requisições.
+
+- **Parâmetros:**
+  - `AValue`: A URL base.
+
+#### ✔️ `function Proxy(const AServer, APassword, AUsername: string; const APort: Integer): ISetup4DRest;`
+
+Configura um proxy para as requisições.
+
+- **Parâmetros:**
+  - `AServer`: O endereço do servidor proxy.
+  - `APassword`: A senha para autenticação no proxy.
+  - `AUsername`: O nome de usuário para autenticação no proxy.
+  - `APort`: A porta do servidor proxy.
+
+#### ✔️ `function DeactivateProxy: ISetup4DRest;`
+
+Desativa a configuração de proxy.
+
+#### ✔️ `function  Timeout(const ATimeout: Integer): ISetup4DRest;`
+
+Define o timeout para as requisições.
+
+- **Parâmetros:**
+  - `ATimeout`: O tempo limite em milissegundos.
+
+#### ✔️ `function  Resource(const AResourceSuffix: string): ISetup4DRest;`
+
+Define o recurso alvo da requisição.
+
+- **Parâmetros:**
+  - `AResourceSuffix`: O sufixo do recurso.
+
+#### ✔️ `function  Resource: string;`
+
+Obtém o recurso atualmente configurado.
+
+#### ✔️ `function  ClearResource: ISetup4DRest;`
+
+Limpa a configuração do recurso.
+
+#### ✔️ `function  ResourceSuffix(const AResourceSuffix: string): ISetup4DRest;`
+
+Define o sufixo do recurso para a requisição.
+
+- **Parâmetros:**
+  - `AResourceSuffix`: O sufixo do recurso.
+
+#### ✔️ `function  ResourceSuffix: string;`
+
+Obtém o sufixo do recurso atualmente configurado.
+
+#### ✔️ `function  ClearResourceSuffix: ISetup4DRest;`
+
+Limpa a configuração do sufixo do recurso.
+
+#### ✔️ `function  AddHeader(const AName, AValue: string): ISetup4DRest;`
+
+Adiciona um cabeçalho à requisição.
+
+- **Parâmetros:**
+  - `AName`: O nome do cabeçalho.
+  - `AValue`: O valor do cabeçalho.
+ 
+#### ✔️ `function  ClearHeaders: ISetup4DRest;`
+
+Limpa todos os cabeçalhos configurados.
+
+#### ✔️ `function  AddParam(const AName, AValue: string): ISetup4DRest;`
+
+Adiciona um parâmetro à requisição.
+
+- **Parâmetros:**
+  - `AName`: O nome do parâmetro.
+  - `AValue`: O valor do parâmetro.
+
+#### ✔️ `function  ClearParams: ISetup4DRest;`
+
+Limpa todos os parâmetros configurados.
+
+#### ✔️ `function  AddBody(const AContent: string): ISetup4DRest; overload;`
+
+Adiciona um corpo de texto à requisição.
+
+- **Parâmetros:**
+  - `AContent`: O conteúdo de texto a ser adicionado como corpo da requisição.
+
+#### ✔️ `function  AddBody(const AContent: TJSONObject; const AOwns: Boolean = True): ISetup4DRest; overload;`
+
+Adiciona um corpo de objeto JSON à requisição.
+
+- **Parâmetros:**
+  - `AContent`: O objeto JSON a ser adicionado como corpo da requisição.
+  - `AOwns`: Indica se a requisição deve assumir a propriedade do conteúdo.
+
+#### ✔️ `function  AddBody(const AContent: TJSONArray; const AOwns: Boolean = True): ISetup4DRest; overload;`
+
+Adiciona um corpo de array JSON à requisição.
+
+- **Parâmetros:**
+  - `AContent`: O array JSON a ser adicionado como corpo da requisição.
+  - `AOwns`: Indica se a requisição deve assumir a propriedade do conteúdo.
+
+#### ✔️ `function  AddBody(const AContent: TObject; const AOwns: Boolean = True): ISetup4DRest; overload;`
+
+Adiciona um corpo de objeto à requisição.
+
+- **Parâmetros:**
+  - `AContent`: O objeto a ser adicionado como corpo da requisição.
+  - `AOwns`: Indica se a requisição deve assumir a propriedade do conteúdo.
+
+#### ✔️ `function  AddBody(const AContent: TStream; const AOwns: Boolean = True): ISetup4DRest; overload;`
+
+Adiciona um corpo de fluxo de dados à requisição.
+
+- **Parâmetros:**
+  - `AContent`: O fluxo de dados a ser adicionado como corpo da requisição.
+  - `AOwns`: Indica se a requisição deve assumir a propriedade do conteúdo.
+
+#### ✔️ `function  ClearBody: ISetup4DRest;`
+
+Limpa o corpo da requisição.
+
+#### ✔️ `function  Token(const AToken: string): ISetup4DRest;`
+
+Define um token para a autenticação da requisição.
+
+- **Parâmetros:**
+  - `AToken`: O token a ser utilizado na autenticação.
+
+#### ✔️ `function  TokenBearer(const AToken: string): ISetup4DRest;`
+
+Define um token no formato Bearer para a autenticação da requisição.
+
+- **Parâmetros:**
+  - `AToken`: O token a ser utilizado na autenticação.
+
+#### ✔️ `function  BasicAuthentication(const AUsername, APassword: string): ISetup4DRest;`
+
+Define credenciais de autenticação no formato básico (Basic Authentication) para a requisição.
+
+- **Parâmetros:**
+  - `AUsername`: Nome de usuário.
+  - `APassword`: Senha associada ao nome de usuário.
+
+#### ✔️ `function  Accept(const AAccept: string): ISetup4DRest; overload;`
+
+Define o cabeçalho "Accept" da requisição.
+
+- **Parâmetros:**
+  - `AAccept`: O valor para o cabeçalho "Accept".
+
+#### ✔️ `function  AcceptCharset(const AAcceptCharset: string): ISetup4DRest; overload;`
+
+Define o cabeçalho "Accept-Charset" da requisição.
+
+- **Parâmetros:**
+  - `AAcceptCharset`: O valor para o cabeçalho "Accept-Charset".
+
+#### ✔️ `function  AcceptEncoding(const AAcceptEncoding: string): ISetup4DRest; overload;`
+
+Define o cabeçalho "Accept-Encoding" da requisição.
+
+- **Parâmetros:**
+  - `AAcceptEncoding`: O valor para o cabeçalho "Accept-Encoding".
+
+#### ✔️ `function  Get: ISetup4DRest;`
+
+Este método realiza uma requisição HTTP do tipo GET.
+
+#### ✔️ `function  Post: ISetup4DRest;`
+
+Este método realiza uma requisição HTTP do tipo POST.
+
+#### ✔️ `function  Put: ISetup4DRest;`
+
+Este método realiza uma requisição HTTP do tipo PUT.
+
+#### ✔️ `function  Delete: ISetup4DRest;`
+
+Este método realiza uma requisição HTTP do tipo DELETE.
+
+#### ✔️ `function  Patch: ISetup4DRest;`
+
+Este método realiza uma requisição HTTP do tipo PATCH.
+
+### ℹ️ Observação
+
+- Os métodos `Get`, `Post`, `Put`, `Delete` e `Patch` são responsáveis por iniciar uma configuração para uma requisição HTTP específica, definindo o método correspondente.
+
+#### ✔️ `function  AsContent: String;`
+
+Este método obtém o conteúdo da resposta como uma string.
+
+- **Retorno:**
+  - Uma string contendo o conteúdo da resposta.
+
+#### ✔️ `function  AsStatusCode: Int64;`
+
+Este método obtém o código de status da resposta.
+
+- **Retorno:**
+  - Um valor inteiro representando o código de status da resposta HTTP.
+
+#### ✔️ `function  AsJSONValue: {$IFDEF FPC}TJSONData{$ELSE}TJSONValue{$ENDIF};`
+
+Este método obtém o conteúdo da resposta como um objeto JSON.
+
+- **Retorno:**
+  - Um objeto JSON representando o conteúdo da resposta.
+
+### ℹ️ Observação
+
+- O método `AsJSONValue` é utilizado para obter o conteúdo da resposta como um objeto JSON, permitindo manipulação e análise estruturada dos dados retornados pela requisição.
